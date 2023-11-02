@@ -1,0 +1,26 @@
+{
+  "name": "nodejs_hoidanit",
+  "version": "1.0.0",
+  "description": "Hoc node js tren chanel hoidanit",
+  "main": "sever.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node sever.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hung24855/Learn-NodeJS.git"
+  },
+  "keywords": [
+    "NodeJS"
+  ],
+  "author": "Nghiem Hong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hung24855/Learn-NodeJS/issues"
+  },
+  "homepage": "https://github.com/Hung24855/Learn-NodeJS#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
