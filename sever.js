@@ -1,6 +1,8 @@
 // do cài express nên có thể sử dụng nó ở đây
 const express = require("express");
-
+const configViewEngine = require("./src/config/viewEngine");
+const configStaticFile = require("./src/config/staticFile.js");
+const webRouter = require("./src/routes/web.js");
 // app express
 const app = express();
 
@@ -14,24 +16,13 @@ var path = require("path");
 const Port = process.env.PORT;
 
 //Config template engine
-app.set("view engine", "ejs"); // Khai báo sử dụng view engine ejs
-app.set("views", path.join(__dirname, "./src/views")); // Tạo đường dẫn đến nơi lưu trữ các view engine
+configViewEngine(app);
 
 //Config static file
-app.use(express.static(path.join(__dirname, "./src/public")));
+configStaticFile(app);
 
 //Khai báo route <Điều hướng>
-app.get("/", function (req, res) {
-  res.render("Home.ejs"); // render ra view engine Home.ejs
-});
-
-app.get("login", function (req, res) {
-  res.send("Check login !");
-});
-
-app.get("*", function (req, res) {
-  res.send("Check ABC");
-});
+app.use("/", webRouter);
 
 app.listen(Port, () => {
   console.log("Xin chào Nghiêm Hồng!");
