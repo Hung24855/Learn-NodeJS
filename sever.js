@@ -1,8 +1,9 @@
 const express = require("express"); // do cài express nên có thể sử dụng nó ở đây
 const app = express(); // app express
-
+require("dotenv").config();
 var path = require("path"); // thư viện path giúp mk có thể lấy được đường dẫn hiện tại đang đứng . Hiện tại file mk đang đứng là file sever.js
-
+const Port = process.env.PORT;
+const HostName = "localhost";
 app.set("view engine", "ejs"); // Khai báo sử dụng view engine ejs
 app.set("views", path.join(__dirname, "./src/views")); // Tạo đường dẫn đến nơi lưu trữ các view engine
 //Khai báo route <Điều hướng>
@@ -18,6 +19,7 @@ app.get("*", function (req, res) {
   res.send("Check ABC");
 });
 
-app.listen(3000, () => {
+app.listen(Port, () => {
   console.log("Xin chào Nghiêm Hồng!");
+  console.log("Port : ", Port);
 });
