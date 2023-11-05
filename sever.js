@@ -3,6 +3,8 @@ const express = require("express");
 const configViewEngine = require("./src/config/viewEngine");
 const configStaticFile = require("./src/config/staticFile.js");
 const webRouter = require("./src/routes/web.js");
+const mysql = require("mysql2");
+
 // app express
 const app = express();
 
@@ -23,6 +25,23 @@ configStaticFile(app);
 
 //Khai báo route <Điều hướng>
 app.use("/", webRouter);
+
+const connection = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  port: 3307,
+  password: "123456",
+  database: "NghiemHongDB",
+});
+
+// execute will internally call prepare and query
+connection.execute(
+  "SELECT * FROM Users",
+  ["Rick C-137", 53],
+  function (err, results) {
+    console.log(results); // results contains rows returned by server
+  }
+);
 
 app.listen(Port, () => {
   console.log("Xin chào Nghiêm Hồng!");
