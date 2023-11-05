@@ -1,5 +1,11 @@
+const { connection } = require("../config/connectDB");
+
 const getHomePage = (req, res) => {
-  res.render("Home.ejs"); // render ra view engine Home.ejs
+  // execute will internally call prepare and query
+  connection.execute("SELECT * FROM Users", function (err, results) {
+    console.log(results); // results contains rows returned by server
+    res.render("Home.ejs"); // render ra view engine Home.ejs
+  });
 };
 
 const getLoginPage = (req, res) => {
