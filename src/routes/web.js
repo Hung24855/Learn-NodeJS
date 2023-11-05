@@ -1,16 +1,18 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/", function (req, res) {
-  res.render("Home.ejs"); // render ra view engine Home.ejs
-});
+const {
+  getHomePage,
+  getLoginPage,
+  get404Page,
+} = require("../controllers/homeController");
 
-router.get("login", function (req, res) {
-  res.send("Check login !");
-});
+//router.Method("/router" , handle) handle sẽ được express truyền cho 2 biến req và res
 
-router.get("*", function (req, res) {
-  res.send("Check ABC");
-});
+router.get("/", getHomePage);
+
+router.get("login", getLoginPage);
+
+router.get("*", get404Page);
 
 module.exports = router;
