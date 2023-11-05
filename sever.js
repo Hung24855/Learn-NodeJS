@@ -3,17 +3,16 @@ const express = require("express");
 const configViewEngine = require("./src/config/viewEngine");
 const configStaticFile = require("./src/config/staticFile.js");
 const webRouter = require("./src/routes/web.js");
-const mysql = require("mysql2");
+const { connection } = require("./src/config/connectDB");
 
 // app express
 const app = express();
 
-//Config dotenv nếu muốn truy cập file .env
-require("dotenv").config();
-
 // thư viện path giúp mk có thể lấy được đường dẫn hiện tại đang đứng . Hiện tại file mk đang đứng là file sever.js
 var path = require("path");
 
+//Config dotenv nếu muốn truy cập file .env
+require("dotenv").config();
 //Sử dụng biến trong file .env
 const Port = process.env.PORT;
 
@@ -25,14 +24,6 @@ configStaticFile(app);
 
 //Khai báo route <Điều hướng>
 app.use("/", webRouter);
-
-const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  port: 3307,
-  password: "123456",
-  database: "NghiemHongDB",
-});
 
 // execute will internally call prepare and query
 connection.execute(
