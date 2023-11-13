@@ -13,49 +13,30 @@
   </head>
   <body>
     <ul>
-      <li><a class="active" href="#home">Home</a></li>
-      <li><a href="#news">News</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#about">About</a></li>
+      <li><a class="active" href="/">Home</a></li>
+      <li><a href="/create">Tạo user</a></li>
     </ul>
-
-    <div class="container mt-5" style="width: 400px; margin-top: 50px">
-      <form action="/create-user" method="post">
-        <div class="mb-3">
-          <label for="inputEmail" class="form-label">Email</label>
-          <input
-            type="email"
-            class="form-control"
-            id="inputEmail"
-            placeholder="Enter your email"
-            required
-            name="email"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="inputName" class="form-label">Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="inputName"
-            placeholder="Enter your name"
-            required
-            name="name"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="inputCity" class="form-label">City</label>
-          <input
-            type="text"
-            class="form-control"
-            id="inputCity"
-            placeholder="Enter your city"
-            required
-            name="city"
-          />
-        </div>
-        <button type="submit" class="btn btn-primary">Gửi</button>
-      </form>
+    <div class="container">
+      <table class="table mt-5 table-bordered table-hover text-center">
+        <tr class="table-light">
+          <th>ID</th>
+          <th>Email</th>
+          <th>Name</th>
+          <th>City</th>
+        </tr>
+        <tr>
+          <td>ID</td>
+          <td>Email</td>
+          <td>Name</td>
+          <td>City</td>
+        </tr>
+        <tr>
+          <td>ID</td>
+          <td>Email</td>
+          <td>Name</td>
+          <td>City</td>
+        </tr>
+      </table>
     </div>
   </body>
 </html>
