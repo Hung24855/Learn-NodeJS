@@ -13,7 +13,15 @@ const getLoginPage = (req, res) => {
 };
 const createUser = (req, res) => {
   console.log("Check req.body : ", req.body);
-  res.send("Create User");
+  let { email, name, city } = req.body;
+  // ? : tượng trưng cho việc dữ liệu sẽ được lấy động . Và data sẽ được truyển động vào từ tham số thứ hai [email , name , city]
+  connection.query(
+    `INSERT INTO  Users (email , name , city) VALUES (?,?,?)`,
+    [email, name, city],
+    function (err, results) {
+      res.send("Create-user thành công !");
+    }
+  );
 };
 
 const get404Page = (req, res) => {
