@@ -10,6 +10,11 @@ const app = express();
 // thư viện path giúp mk có thể lấy được đường dẫn hiện tại đang đứng . Hiện tại file mk đang đứng là file sever.js
 var path = require("path");
 
+// Kích hoạt middleware để xử lý dữ liệu JSON
+app.use(express.json());
+// Kích hoạt middleware để xử lý dữ liệu từ biểu mẫu
+app.use(express.urlencoded({ extended: true }));
+
 //Config dotenv nếu muốn truy cập file .env
 require("dotenv").config();
 //Sử dụng biến trong file .env
@@ -25,6 +30,5 @@ configStaticFile(app);
 app.use("/", webRouter);
 
 app.listen(Port, () => {
-  console.log("Xin chào Nghiêm Hồng!");
-  console.log("Port : ", Port);
+  console.log(`http://localhost:${Port}/`);
 });
