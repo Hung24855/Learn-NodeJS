@@ -31,3 +31,11 @@ li a:hover:not(.active) {
 .active {
   background-color: #04aa6d;
 }
+
+.custom-btn.btn-primary {
+  line-height: 40px;
+  height: 40px;
+  padding: 0;
+  width: 60px;
+  margin-right: 10px;
+}

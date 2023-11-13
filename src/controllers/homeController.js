@@ -1,9 +1,9 @@
 const { connection } = require("../config/connectDB");
+const { getAllUsers } = require("../services/CRUDservices");
 
 const getHomePage = async (req, res) => {
-  // execute will internally call prepare and query
-  let [listUser, filed] = await connection.execute("SELECT * FROM Users");
-  res.render("Home.ejs");
+  let listUser = await getAllUsers();
+  res.render("Home.ejs", { data: listUser });
 };
 
 const getLoginPage = (req, res) => {

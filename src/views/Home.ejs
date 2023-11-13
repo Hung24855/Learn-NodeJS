@@ -3,7 +3,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home page with ejs</title>
-    <link rel="stylesheet" href="/styles/home.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
 
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -23,19 +23,20 @@
           <th>Email</th>
           <th>Name</th>
           <th>City</th>
+          <th>Thao tác</th>
         </tr>
+        <% for (var i = 0; i < data.length; i++) { %>
         <tr>
-          <td>ID</td>
-          <td>Email</td>
-          <td>Name</td>
-          <td>City</td>
+          <td><%= data[i].id %></td>
+          <td><%= data[i].email %></td>
+          <td><%= data[i].name %></td>
+          <td><%= data[i].city %></td>
+          <td>
+            <button class="btn btn-primary custom-btn">Sửa</button
+            ><button class="btn btn-primary custom-btn">Xóa</button>
+          </td>
         </tr>
-        <tr>
-          <td>ID</td>
-          <td>Email</td>
-          <td>Name</td>
-          <td>City</td>
-        </tr>
+        <% } %>
       </table>
     </div>
   </body>
