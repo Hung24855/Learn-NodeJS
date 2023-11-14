@@ -2,7 +2,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home page with ejs</title>
+    <title>Trang chủ</title>
     <link rel="stylesheet" href="/styles/main.css" />
 
     <link
@@ -32,8 +32,10 @@
           <td><%= data[i].name %></td>
           <td><%= data[i].city %></td>
           <td>
-            <button class="btn btn-primary custom-btn">Sửa</button
-            ><button class="btn btn-primary custom-btn">Xóa</button>
+            <a href="/edit/<%= data[i].id %>"
+              ><button class="btn btn-primary custom-btn">Sửa</button></a
+            >
+            <a><button class="btn btn-primary custom-btn">Xóa</button></a>
           </td>
         </tr>
         <% } %>

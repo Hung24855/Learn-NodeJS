@@ -13,6 +13,14 @@ const getLoginPage = (req, res) => {
 const getCreatePage = (req, res) => {
   res.render("CreateUser.ejs");
 };
+const getEditPage = async (req, res) => {
+  const userID = req.params.id;
+  let [results, fields] = await connection.query(`
+    select * from Users where id = ${userID}
+  `);
+  console.log(results);
+  res.render("UpdateUser.ejs", { data: results });
+};
 const createUser = async (req, res) => {
   let { email, name, city } = req.body;
   // ? : tượng trưng cho việc dữ liệu sẽ được lấy động . Và data sẽ được truyển động vào từ tham số thứ hai [email , name , city]
@@ -33,4 +41,5 @@ module.exports = {
   get404Page,
   createUser,
   getCreatePage,
+  getEditPage,
 };

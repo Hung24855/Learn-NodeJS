@@ -7,6 +7,7 @@ const {
   get404Page,
   createUser,
   getCreatePage,
+  getEditPage,
 } = require("../controllers/homeController");
 
 //router.Method("/router" , handle) handle sẽ được express truyền cho 2 biến req và res
@@ -14,6 +15,7 @@ const {
 router.get("/", getHomePage);
 router.get("/login", getLoginPage);
 router.get("/create", getCreatePage);
+router.get("/edit/:id", getEditPage);
 router.post("/create-user", createUser);
 
 module.exports = router;

@@ -2,7 +2,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tạo user</title>
+    <title>Sửa user</title>
     <link rel="stylesheet" href="/styles/main.css" />
 
     <link
@@ -14,9 +14,8 @@
   <body>
     <ul>
       <li><a href="/">Home</a></li>
-      <li><a href="/create" class="active">Tạo user</a></li>
+      <li><a href="/create">Tạo user</a></li>
     </ul>
-
     <div class="container mt-5" style="width: 400px; margin-top: 50px">
       <form action="/create-user" method="post">
         <div class="mb-3">
@@ -28,6 +27,7 @@
             placeholder="Enter your email"
             required
             name="email"
+            value="<%= data[0].email %>"
           />
         </div>
         <div class="mb-3">
@@ -39,6 +39,7 @@
             placeholder="Enter your name"
             required
             name="name"
+            value="<%= data[0].name %>"
           />
         </div>
         <div class="mb-3">
@@ -50,9 +51,10 @@
             placeholder="Enter your city"
             required
             name="city"
+            value="<%= data[0].city %>"
           />
         </div>
-        <button type="submit" class="btn btn-primary custom-btn">Gửi</button>
+        <button type="submit" class="btn btn-primary custom-btn">Lưu</button>
       </form>
     </div>
   </body>
