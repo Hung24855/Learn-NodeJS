@@ -39,3 +39,7 @@ li a:hover:not(.active) {
   width: 60px;
   margin-right: 10px;
 }
+
+.display-none {
+  display: none;
+}

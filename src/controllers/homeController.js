@@ -1,5 +1,10 @@
 const { connection } = require("../config/connectDB");
-const { getAllUsers } = require("../services/CRUDservices");
+const {
+  getAllUsers,
+  getUserByID,
+  createNewUser,
+  updateUserByID,
+} = require("../services/CRUDservices");
 
 const getHomePage = async (req, res) => {
   let listUser = await getAllUsers();
@@ -15,20 +20,20 @@ const getCreatePage = (req, res) => {
 };
 const getEditPage = async (req, res) => {
   const userID = req.params.id;
-  let [results, fields] = await connection.query(`
-    select * from Users where id = ${userID}
-  `);
-  console.log(results);
-  res.render("UpdateUser.ejs", { data: results });
+  let User = await getUserByID(userID);
+  const result = User && User.length > 0 ? User[0] : {};
+  res.render("UpdateUser.ejs", { data: result });
 };
 const createUser = async (req, res) => {
   let { email, name, city } = req.body;
-  // ? : tượng trưng cho việc dữ liệu sẽ được lấy động . Và data sẽ được truyển động vào từ tham số thứ hai [email , name , city]
-  let [results, fields] = await connection.query(
-    `INSERT INTO  Users (email , name , city) VALUES (?,?,?)`,
-    [email, name, city]
-  );
+  await createNewUser(email, name, city);
   res.send("Create-user thành công !");
+};
+
+const updateUser = async (req, res) => {
+  let { email, name, city, id } = req.body;
+  await updateUserByID(email, name, city, id);
+  res.redirect("/");
 };
 
 const get404Page = (req, res) => {
@@ -42,4 +47,5 @@ module.exports = {
   createUser,
   getCreatePage,
   getEditPage,
+  updateUser,
 };

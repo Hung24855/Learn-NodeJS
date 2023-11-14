@@ -17,7 +17,10 @@
       <li><a href="/create">Tạo user</a></li>
     </ul>
     <div class="container mt-5" style="width: 400px; margin-top: 50px">
-      <form action="/create-user" method="post">
+      <form action="/update-user" method="post">
+        <div class="mb-3 display-none">
+          <input name="id" value="<%= data.id %>" />
+        </div>
         <div class="mb-3">
           <label for="inputEmail" class="form-label">Email</label>
           <input
@@ -27,7 +30,7 @@
             placeholder="Enter your email"
             required
             name="email"
-            value="<%= data[0].email %>"
+            value="<%= data.email %>"
           />
         </div>
         <div class="mb-3">
@@ -39,7 +42,7 @@
             placeholder="Enter your name"
             required
             name="name"
-            value="<%= data[0].name %>"
+            value="<%= data.name %>"
           />
         </div>
         <div class="mb-3">
@@ -51,7 +54,7 @@
             placeholder="Enter your city"
             required
             name="city"
-            value="<%= data[0].city %>"
+            value="<%= data.city %>"
           />
         </div>
         <button type="submit" class="btn btn-primary custom-btn">Lưu</button>
