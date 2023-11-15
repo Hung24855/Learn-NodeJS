@@ -35,7 +35,13 @@
             <a href="/edit/<%= data[i].id %>"
               ><button class="btn btn-primary custom-btn">Sửa</button></a
             >
-            <a><button class="btn btn-primary custom-btn">Xóa</button></a>
+            <form
+              action="/confirm-delete/<%= data[i].id %>"
+              method="post"
+              class="btn-delete-home"
+            >
+              <button class="btn btn-primary custom-btn">Xóa</button>
+            </form>
           </td>
         </tr>
         <% } %>

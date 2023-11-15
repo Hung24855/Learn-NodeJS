@@ -4,6 +4,7 @@ const {
   getUserByID,
   createNewUser,
   updateUserByID,
+  deleteUserByID,
 } = require("../services/CRUDservices");
 
 const getHomePage = async (req, res) => {
@@ -36,6 +37,18 @@ const updateUser = async (req, res) => {
   res.redirect("/");
 };
 
+const confirmDeleteUser = async (req, res) => {
+  const userID = req.params.id;
+  let User = await getUserByID(userID);
+  res.render("DeleteUser.ejs", { data: User });
+};
+
+const deleteUser = async (req, res) => {
+  const userID = req.body.id;
+  await deleteUserByID(userID);
+  res.redirect("/");
+};
+
 const get404Page = (req, res) => {
   res.send("Page 404!");
 };
@@ -48,4 +61,6 @@ module.exports = {
   getCreatePage,
   getEditPage,
   updateUser,
+  confirmDeleteUser,
+  deleteUser,
 };

@@ -43,3 +43,7 @@ li a:hover:not(.active) {
 .display-none {
   display: none;
 }
+
+.btn-delete-home {
+  display: inline-block;
+}
