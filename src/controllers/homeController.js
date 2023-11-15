@@ -28,7 +28,7 @@ const getEditPage = async (req, res) => {
 const createUser = async (req, res) => {
   let { email, name, city } = req.body;
   await createNewUser(email, name, city);
-  res.send("Create-user thành công !");
+  res.redirect("/");
 };
 
 const updateUser = async (req, res) => {
@@ -37,14 +37,8 @@ const updateUser = async (req, res) => {
   res.redirect("/");
 };
 
-const confirmDeleteUser = async (req, res) => {
-  const userID = req.params.id;
-  let User = await getUserByID(userID);
-  res.render("DeleteUser.ejs", { data: User });
-};
-
 const deleteUser = async (req, res) => {
-  const userID = req.body.id;
+  const userID = req.params.id;
   await deleteUserByID(userID);
   res.redirect("/");
 };
@@ -61,6 +55,5 @@ module.exports = {
   getCreatePage,
   getEditPage,
   updateUser,
-  confirmDeleteUser,
   deleteUser,
 };

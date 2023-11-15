@@ -35,17 +35,48 @@
             <a href="/edit/<%= data[i].id %>"
               ><button class="btn btn-primary custom-btn">Sửa</button></a
             >
-            <form
-              action="/confirm-delete/<%= data[i].id %>"
-              method="post"
-              class="btn-delete-home"
+
+            <button
+              class="btn btn-primary custom-btn delete-btn"
+              data-id="<%= data[i].id %>"
             >
-              <button class="btn btn-primary custom-btn">Xóa</button>
-            </form>
+              Xóa
+            </button>
           </td>
         </tr>
         <% } %>
       </table>
     </div>
+    <script>
+      const deleteButtons = document.querySelectorAll(".delete-btn");
+      deleteButtons.forEach((button) => {
+        button.addEventListener("click", async (event) => {
+          const userId = event.target.getAttribute("data-id");
+
+          const confirmation = confirm(
+            `Bạn có chắc chắn muốn xóa người dùng : ${userId}`
+          );
+
+          if (confirmation) {
+            try {
+              const respense = await fetch(`/delete-user/${userId}`, {
+                //Có lỗi khi dùng với method DELETE
+                method: "post",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              });
+
+              if (respense.ok) {
+                //Reload lại trang
+                location.reload();
+              }
+            } catch {
+              console.log("Có lỗi xảy ra!");
+            }
+          }
+        });
+      });
+    </script>
   </body>
 </html>

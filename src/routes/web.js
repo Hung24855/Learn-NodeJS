@@ -9,7 +9,6 @@ const {
   getCreatePage,
   getEditPage,
   updateUser,
-  confirmDeleteUser,
   deleteUser,
 } = require("../controllers/homeController");
 
@@ -21,7 +20,6 @@ router.get("/create", getCreatePage);
 router.get("/edit/:id", getEditPage);
 router.post("/create-user", createUser);
 router.post("/update-user", updateUser);
-router.post("/confirm-delete/:id", confirmDeleteUser);
-router.post("/delete-user", deleteUser);
+router.post("/delete-user/:id", deleteUser);
 
 module.exports = router;
